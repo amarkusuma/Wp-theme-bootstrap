@@ -7,6 +7,13 @@ function bootstrapstarter_enqueue_styles()
     wp_enqueue_style('bootstrapstarter-style', get_stylesheet_uri(), $dependencies);
 }
 
+function stylesheet()
+{
+    wp_enqueue_style('my-style', get_stylesheet_directory_uri() . '/style.css', false, '1.0', 'all');
+}
+
+add_action('wp_enqueue_scripts', 'stylesheet');
+
 function bootstrapstarter_enqueue_scripts()
 {
     $dependencies = array('jquery');
@@ -28,7 +35,6 @@ function my_register_sidebars()
             'after_widget'  => '</aside>',
         )
     );
-    /* Repeat register_sidebar() code for additional sidebars. */
 }
 
 function register_my_menus()
