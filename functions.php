@@ -1,24 +1,19 @@
 <?php
 
-function bootstrapstarter_enqueue_styles()
+function bootstrap()
 {
     wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css');
     $dependencies = array('bootstrap');
     wp_enqueue_style('bootstrapstarter-style', get_stylesheet_uri(), $dependencies);
-}
 
-function stylesheet()
-{
+    $dependencies = array('jquery');
+    wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', $dependencies, '3.3.6', true);
+
     wp_enqueue_style('my-style', get_stylesheet_directory_uri() . '/style.css', false, '1.0', 'all');
 }
 
-add_action('wp_enqueue_scripts', 'stylesheet');
+add_action('wp_enqueue_scripts', 'bootstrap');
 
-function bootstrapstarter_enqueue_scripts()
-{
-    $dependencies = array('jquery');
-    wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', $dependencies, '3.3.6', true);
-}
 
 
 function my_register_sidebars()
@@ -49,6 +44,3 @@ function register_my_menus()
 
 add_action('init', 'register_my_menus');
 add_action('widgets_init', 'my_register_sidebars');
-
-add_action('wp_enqueue_scripts', 'bootstrapstarter_enqueue_styles');
-add_action('wp_enqueue_scripts', 'bootstrapstarter_enqueue_scripts');
