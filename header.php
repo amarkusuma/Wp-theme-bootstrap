@@ -18,12 +18,10 @@
                 <a class="blog-nav-item" href="#">Form Testimonial</a> -->
                 <div class="text-danger">
                     <?php wp_nav_menu(array(
-                        'menu_id= mymenu',
                         'link_before'     => '<span class="text-dark font-weight-bold blog-nav-item navbar-default icon-bar" >',
                         'link_after'      => '</span>',
                         'container_class'       => 'blog-nav-item ',
-                        'echo'            => true,
-                        'fallback_cb'     => 'wp_page_menu',
+
                         'items_wrap'      => '<ul class="nav justify-content-end w-100 %2$s">%3$s</ul>',
 
                     ));
